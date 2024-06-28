@@ -40,13 +40,27 @@ Job.send_keys("QA")
 Company = browser.find_element(By.NAME, 'company') 
 Company.send_keys("SkyPro")
 
-#time.sleep(10)
-
-submit = browser.find_element(By.CLASS_NAME, "btn btn-outline-primary mt-3")
+submit = browser.find_element(By.XPATH, "//button[text()='Submit']")
 submit.click()
 
+# Проверка цветов
 
-time.sleep(55)
+zip = browser.find_element(By.ID, 'zip-code')
+
+text_color =  zip.value_of_css_property("color")
+assert text_color == "rgba(132, 32, 41, 1)"
+print("Цвет zip красный:", text_color)
+
+alert_elements = browser.find_elements(By.CSS_SELECTOR, ".alert.py-2.alert-success")
+
+for idx, element in enumerate(alert_elements):
+    el_color = alert_elements[idx].value_of_css_property("color")
+    assert el_color == "rgba(15, 81, 50, 1)"
+    print ("Ok")
+
+
+
+time.sleep(5)
 
 browser.quit()
 
