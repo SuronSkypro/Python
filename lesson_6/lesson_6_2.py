@@ -20,4 +20,3 @@ print("текст кнопки - ", button.text)
 
 
 browser.quit()
-
