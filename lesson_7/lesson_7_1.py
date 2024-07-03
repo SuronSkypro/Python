@@ -28,6 +28,7 @@ def test_lesson_7_1():
 
 
     alert_elements = TestPage.find_elements(".alert.py-2.alert-success")
+    assert len(alert_elements) == 9 
 
     for idx, element in enumerate(alert_elements):
         el_color = alert_elements[idx].value_of_css_property("color")
